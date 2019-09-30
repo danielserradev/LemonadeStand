@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 
 namespace LemStand
 {
-    class Weather 
+    class IceCube : Item
     {
         //member variables(Has a)
-        public string condition;
-        public int temperature;
-        private List<string> weatherCondition;
-        public string predictedForecast;
+
 
         //constructor(Spawner)
 

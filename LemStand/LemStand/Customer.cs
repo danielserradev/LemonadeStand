@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemStand
 {
-    class Customer
+    class Customer 
     {
         //member variables(Has a)
         private List<string> names;

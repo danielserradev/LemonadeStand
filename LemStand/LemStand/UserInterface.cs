@@ -6,12 +6,16 @@ using System.Threading.Tasks;
 
 namespace LemStand
 {
-    static class UserInterface
+    class UserInterface
     {
         //member variables(Has a)
 
         //constructor(Spawner)
 
         //member methods(Can Do)
+        public void DiplayInfo()
+        {
+
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemStand
 {
-    class Wallet
+    class Wallet 
     {
         //member variables(Has a)
         private double money;

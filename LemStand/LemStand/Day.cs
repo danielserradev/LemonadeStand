@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemStand
 {
-    class Day
+    class Day 
     {
         //member variables(Has a)
         public Weather weather;
@@ -15,5 +15,6 @@ namespace LemStand
         //constructor(Spawner)
 
         //member methods(Can Do)
+        
     }
 }

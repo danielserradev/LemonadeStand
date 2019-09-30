@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemStand
 {
-    class SugarCubes
+    class SugarCube : Item 
     {
         //member variables(Has a)
 

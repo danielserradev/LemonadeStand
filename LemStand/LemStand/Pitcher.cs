@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemStand
 {
-    class Pitcher
+    class Pitcher : Item
     {
         //member variables(Has a)
         public int cupsLeftInPitcher;
