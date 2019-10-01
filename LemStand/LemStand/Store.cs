@@ -11,33 +11,19 @@ namespace LemStand
         //member variables(Has a)
         //inventory of stuff
         Player player;
-        public int stockOfLemons;
-        public int stockOfSugarCubes;
-        public int stockOfIceCubes;
-        public int stockOfCups;
         public string playersChoice;
         
         //constructor(Spawner)
-
+        
         public Store(Player playerValueBeingPassedIn)
         {
-            stockOfLemons = 500;
-            stockOfSugarCubes = 500;
-            stockOfIceCubes = 5000;
-            stockOfCups = 1000;
             player = playerValueBeingPassedIn;
+            
             
         }
 
         //member methods(Can Do)
-        
-        public void DisplayStoreInventory()
-        {
-            Console.WriteLine("The store has the following in stock: " + "\n" + stockOfLemons + 
-                " Lemons, " + stockOfSugarCubes + " sugarCubes, " + stockOfIceCubes + " iceCubes, "
-                + stockOfCups + " cups \n");
-        }
-        public void InventoryPrices()
+        public void DisplayPrices()
         {
             Console.WriteLine("Prices are listed below. " +
                 "\nLemons: $1 " +
@@ -76,7 +62,7 @@ namespace LemStand
             switch (playersChoice)
             {
                 case "1":
-                    InventoryPrices();
+                    DisplayPrices();
                     break;
                 case "2":
                     SellLemons();
@@ -106,7 +92,15 @@ namespace LemStand
             Console.WriteLine("Please press 1 to buy a lemon. Press 2 to go back to the store menu." +
                 "\n" +
                 "\n" +
+                "\nYour current recipe is:" +
+                "\nLemons per pitcher: " + player.recipe.amountOfLemons +
+                "\nSugar Cubes per pitcher: " + player.recipe.amountOfSugarCubes +
+                "\nIce Cubes per pitcher: " + player.recipe.amountOfIceCubes +
+                "\nPrice per cup: " + player.recipe.pricePerCup +
+                "\n"+
                 "\nYour lemon inventory: " + player.inventory.lemons.Count);
+            
+
             int choice = int.Parse(Console.ReadLine());
             if(choice == 1)
             {
@@ -122,6 +116,12 @@ namespace LemStand
         {
             Console.WriteLine("Please press 1 to buy a Sugar Cube. Press 2 to go back to the store menu." +
                 "\n" +
+                "\n" +
+                "\nYour current recipe is:" +
+                "\nLemons per pitcher: " + player.recipe.amountOfLemons +
+                "\nSugar Cubes per pitcher: " + player.recipe.amountOfSugarCubes +
+                "\nIce Cubes per pitcher: " + player.recipe.amountOfIceCubes +
+                "\nPrice per cup: " + player.recipe.pricePerCup +
                 "\n" +
                 "\nYour Sugar Cube inventory: " + player.inventory.sugarCubes.Count);
             int choice = int.Parse(Console.ReadLine());
@@ -140,6 +140,12 @@ namespace LemStand
             Console.WriteLine("Please press 1 to buy Ice Cubes. Press 2 to go back to the store menu." +
                 "\n" +
                 "\n" +
+                "\nYour current recipe is:" +
+                "\nLemons per pitcher: " + player.recipe.amountOfLemons +
+                "\nSugar Cubes per pitcher: " + player.recipe.amountOfSugarCubes +
+                "\nIce Cubes per pitcher: " + player.recipe.amountOfIceCubes +
+                "\nPrice per cup: " + player.recipe.pricePerCup +
+                "\n" +
                 "\nYour Ice Cube inventory: " + player.inventory.iceCubes.Count);
             int choice = int.Parse(Console.ReadLine());
             if (choice == 1)
@@ -156,6 +162,12 @@ namespace LemStand
         {
             Console.WriteLine("Please press 1 to buy Cups. Press 2 to go back to the store menu." +
                 "\n" +
+                "\n" +
+                "\nYour current recipe is:" +
+                "\nLemons per pitcher: " + player.recipe.amountOfLemons +
+                "\nSugar Cubes per pitcher: " + player.recipe.amountOfSugarCubes +
+                "\nIce Cubes per pitcher: " + player.recipe.amountOfIceCubes +
+                "\nPrice per cup: " + player.recipe.pricePerCup +
                 "\n" +
                 "\nYour cup inventory: " + player.inventory.cups.Count);
             int choice = int.Parse(Console.ReadLine());

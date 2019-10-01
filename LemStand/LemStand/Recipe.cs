@@ -9,13 +9,13 @@ namespace LemStand
     public class Recipe 
     {
         //member variables(Has a)
-        Inventory inventory;
         
-        //public int amountOfLemons;
-        //public int amountOfSugarCubes;
-        //public int amountOfIceCubes;
-        //public double pricePerCup;
-        public int cupOfLemonade;
+        
+        public int amountOfLemons;
+        public int amountOfSugarCubes;
+        public int amountOfIceCubes;
+        public double pricePerCup;
+        
 
         //constructor(Spawner)
         public Recipe()
@@ -23,20 +23,29 @@ namespace LemStand
             
         }
 
-
         //member methods(Can Do)
-        //public int LemonadeRecipe(Player player)
-        //{
-        //    if(player.inventory.lemons.Count >= 1 &&  player.inventory.sugarCubes.Count >= 1 && player.inventory.iceCubes.Count >= 1 && player.inventory.cups.Count >= 1)
-        //    {
-        //        cupOfLemonade = 1;
-        //    }       
-        //    return cupOfLemonade;    
-        //}
-        public void CheckLemonadeInventory()
+        public void CreateLemonade()
         {
-            Console.WriteLine("You have " + "cups of lemonate");
+            Console.WriteLine("Please enter the amount of lemons you would like to put into the lemonade.");
+            amountOfLemons = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Please enter the amount of Sugar Cubes you would like to put into the lemonade.");
+            amountOfSugarCubes = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Please enter the amount of Ice Cubes you would like to put into each cup.");
+            amountOfIceCubes = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Please enter the amount you would like to charge per cup.");
+            pricePerCup = double.Parse(Console.ReadLine());
         }
-        
+        public void DisplayRecipeIngredients()
+        {
+            Console.WriteLine("Your current recipe is:" +
+                "\n Lemons per pitcher: " + amountOfLemons +
+                "\n Sugar Cubes per pitcher: " + amountOfSugarCubes +
+                "\n Ice Cubes per pitcher: " + amountOfIceCubes +
+                "\n Price per cup: " + pricePerCup +
+                "\n");
+        }
     }
 }

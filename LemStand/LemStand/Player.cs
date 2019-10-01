@@ -17,6 +17,7 @@ namespace LemStand
         public Player()
         {
             inventory = new Inventory();
+            recipe = new Recipe();
             
         }
 
@@ -25,11 +26,6 @@ namespace LemStand
         {
             Console.WriteLine("Please enter your name? ");
             name = Console.ReadLine();
-        }
-       
-        public void GoTotheStore()
-        {
-
         }
     }
 }

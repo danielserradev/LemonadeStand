@@ -10,12 +10,12 @@ namespace LemStand
     {
         //member variables(Has a)
         public Player playerOne;
-        private Store store;
-        
+        public Store store;
+        public Recipe recipe;        
         public int numberOfPlayers;
         public int dayCounter;
         public int pitcher;
-        public int cupOfLemonade;
+        public int cupOfLemonade = 0;
 
         
 
@@ -31,14 +31,18 @@ namespace LemStand
         //member methods(Can Do)
         public void RunGame()
         {
-            Console.WriteLine("Hello");
+            UserInterface.DiplayInfo();
             int numberOfPlayers = GetNumberOfPlayers();
             CreatePlayer(numberOfPlayers);
             playerOne.ChoosePlayerName();
+            playerOne.recipe.CreateLemonade();
             store = new Store(playerOne);
-            store.DisplayStoreInventory();
+            
             store.StoreMenu();
             MakeRecipe();
+            
+            
+            
             
             
 
@@ -79,17 +83,39 @@ namespace LemStand
         }
         public int LemonadeRecipe()
         {
-            if (playerOne.inventory.lemons.Count >= 1 && playerOne.inventory.sugarCubes.Count >= 1 && playerOne.inventory.iceCubes.Count >= 1 && playerOne.inventory.cups.Count >= 1)
+            if(playerOne.inventory.lemons.Count >= 1 && playerOne.inventory.sugarCubes.Count >= 1 && playerOne.inventory.iceCubes.Count >= 1 && playerOne.inventory.cups.Count >= 1)
             {
-                cupOfLemonade = 1;
+                cupOfLemonade++;
+                playerOne.inventory.lemons.RemoveRange(0,1);
+                playerOne.inventory.sugarCubes.RemoveRange(0,1);
+                playerOne.inventory.iceCubes.RemoveRange(0,1);
+                playerOne.inventory.cups.RemoveRange(0,1);
             }
+            
+            
+            if(playerOne.inventory.lemons.Count != 0)
+            {
+                
+                return LemonadeRecipe();
+                
+            }
+            
+
             return cupOfLemonade;
+
+
         }
         public void MakeRecipe()
         {
             pitcher = LemonadeRecipe();
 
             Console.WriteLine("Your Pitcher inventory: " + pitcher);
+            Console.WriteLine("Your Lemon inventory: " + playerOne.inventory.lemons.Count);
+            Console.WriteLine("Your Sugar Cube inventory: " + playerOne.inventory.sugarCubes.Count);
+            Console.WriteLine("Your Ice Cube inventory: " + playerOne.inventory.iceCubes.Count);
+            Console.WriteLine("Your Cup inventory: " + playerOne.inventory.cups.Count);
+            
+
 
         }
         public int DayCounter()

@@ -6,15 +6,19 @@ using System.Threading.Tasks;
 
 namespace LemStand
 {
-    class UserInterface
+    static class UserInterface
     {
         //member variables(Has a)
 
+
         //constructor(Spawner)
+        
 
         //member methods(Can Do)
-        public void DiplayInfo()
+        public static void DiplayInfo()
         {
+            Console.WriteLine("HelloWorld");
+            Console.WriteLine();
 
         }
     }

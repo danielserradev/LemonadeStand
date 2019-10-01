@@ -9,6 +9,7 @@ namespace LemStand
     class Pitcher : Item
     {
         //member variables(Has a)
+        public int fullPitcher;
         public int cupsLeftInPitcher;
 
 
