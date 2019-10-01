@@ -6,13 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemStand
 {
-    public class Lemon : Item
+    class Home
     {
-        //member variables(Has a)
-
-
-        //constructor(Spawner)
-
-        //member methods(Can Do)
     }
 }

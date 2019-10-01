@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace LemStand 
 {
-    class Inventory 
+    public class Inventory 
     {
         //member variables(Has a)
+        public Player player;
+        public Recipe recipe;
         public List<Lemon> lemons;
         public List<IceCube> iceCubes;
         public List<SugarCube> sugarCubes;
@@ -19,6 +21,9 @@ namespace LemStand
         public Inventory()
         {
             lemons = new List<Lemon>();
+            iceCubes = new List<IceCube>();
+            sugarCubes = new List<SugarCube>();
+            cups = new List<Cup>();
         }
 
         //member methods(Can Do)

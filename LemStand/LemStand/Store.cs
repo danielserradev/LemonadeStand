@@ -48,9 +48,14 @@ namespace LemStand
         }
         
 
-        public void TakingPlayerMoney()
+        public void CheckInventory()
         {
-
+            Console.WriteLine("Your current inventory is:" +
+                "\n Lemons: " + player.inventory.lemons.Count +
+                "\n Sugar Cubes: " + player.inventory.sugarCubes.Count +
+                "\n Ice Cubes: " + player.inventory.iceCubes.Count +
+                "\n Cups: " + player.inventory.cups.Count);
+            StoreMenu();
         }
         
         public void SendPlayerBackToGame()
@@ -77,14 +82,19 @@ namespace LemStand
                     SellLemons();
                     break;
                 case "3":
+                    SellSugarCubes();
                     break;
                 case "4":
+                    SellIceCubes();
                     break;
                 case "5":
+                    SellCups();
                     break;
                 case "6":
+                    CheckInventory();
                     break;
                 case "7":
+
                     break;
                 default:
                     StoreMenu();
@@ -108,6 +118,56 @@ namespace LemStand
                 StoreMenu();
             }
         }
-        
+        public void SellSugarCubes()
+        {
+            Console.WriteLine("Please press 1 to buy a Sugar Cube. Press 2 to go back to the store menu." +
+                "\n" +
+                "\n" +
+                "\nYour Sugar Cube inventory: " + player.inventory.sugarCubes.Count);
+            int choice = int.Parse(Console.ReadLine());
+            if (choice == 1)
+            {
+                player.inventory.sugarCubes.Add(new SugarCube());
+                SellSugarCubes();
+            }
+            else if (choice == 2)
+            {
+                StoreMenu();
+            }
+        }
+        public void SellIceCubes()
+        {
+            Console.WriteLine("Please press 1 to buy Ice Cubes. Press 2 to go back to the store menu." +
+                "\n" +
+                "\n" +
+                "\nYour Ice Cube inventory: " + player.inventory.iceCubes.Count);
+            int choice = int.Parse(Console.ReadLine());
+            if (choice == 1)
+            {
+                player.inventory.iceCubes.Add(new IceCube());
+                SellIceCubes();
+            }
+            else if (choice == 2)
+            {
+                StoreMenu();
+            }
+        }
+        public void SellCups()
+        {
+            Console.WriteLine("Please press 1 to buy Cups. Press 2 to go back to the store menu." +
+                "\n" +
+                "\n" +
+                "\nYour cup inventory: " + player.inventory.cups.Count);
+            int choice = int.Parse(Console.ReadLine());
+            if (choice == 1)
+            {
+                player.inventory.cups.Add(new Cup());
+                SellCups();
+            }
+            else if (choice == 2)
+            {
+                StoreMenu();
+            }
+        }
     }
 }

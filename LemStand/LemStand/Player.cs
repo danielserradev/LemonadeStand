@@ -6,16 +6,18 @@ using System.Threading.Tasks;
 
 namespace LemStand
 {
-    class Player 
+    public class Player 
     {
         //member variables(Has a)
         public string name;
         public Inventory inventory;
+        public Recipe recipe;
 
         //constructor(Spawner)
         public Player()
         {
             inventory = new Inventory();
+            
         }
 
         //member methods(Can Do)

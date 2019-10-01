@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemStand
 {
-    abstract class Item
+    public abstract class Item
     {
         //member variables(Has a)
         public string name;

@@ -11,8 +11,11 @@ namespace LemStand
         //member variables(Has a)
         public Player playerOne;
         private Store store;
+        
         public int numberOfPlayers;
         public int dayCounter;
+        public int pitcher;
+        public int cupOfLemonade;
 
         
 
@@ -33,9 +36,12 @@ namespace LemStand
             CreatePlayer(numberOfPlayers);
             playerOne.ChoosePlayerName();
             store = new Store(playerOne);
-            DayCounter();
             store.DisplayStoreInventory();
             store.StoreMenu();
+            MakeRecipe();
+            
+            
+
         }
         public int GetNumberOfPlayers()
         {
@@ -71,12 +77,28 @@ namespace LemStand
                 playerOne = new Player();
             }
         }
+        public int LemonadeRecipe()
+        {
+            if (playerOne.inventory.lemons.Count >= 1 && playerOne.inventory.sugarCubes.Count >= 1 && playerOne.inventory.iceCubes.Count >= 1 && playerOne.inventory.cups.Count >= 1)
+            {
+                cupOfLemonade = 1;
+            }
+            return cupOfLemonade;
+        }
+        public void MakeRecipe()
+        {
+            pitcher = LemonadeRecipe();
+
+            Console.WriteLine("Your Pitcher inventory: " + pitcher);
+
+        }
         public int DayCounter()
         {
             dayCounter++;
             Console.WriteLine("Day " + dayCounter + " out of 7.");
             return dayCounter;
         }
+
         
         
 
