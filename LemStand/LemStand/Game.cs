@@ -14,8 +14,8 @@ namespace LemStand
         public Recipe recipe;        
         public int numberOfPlayers;
         public int dayCounter;
-        public int pitcher;
-        public int cupOfLemonade = 0;
+        public int fullPitcher;
+        public int ingredients = 0;
 
         
 
@@ -83,13 +83,11 @@ namespace LemStand
         }
         public int LemonadeRecipe()
         {
-            if(playerOne.inventory.lemons.Count >= 1 && playerOne.inventory.sugarCubes.Count >= 1 && playerOne.inventory.iceCubes.Count >= 1 && playerOne.inventory.cups.Count >= 1)
+            if(playerOne.inventory.lemons.Count >= 1 && playerOne.inventory.sugarCubes.Count >= 1)
             {
-                cupOfLemonade++;
+                ingredients++;
                 playerOne.inventory.lemons.RemoveRange(0,1);
                 playerOne.inventory.sugarCubes.RemoveRange(0,1);
-                playerOne.inventory.iceCubes.RemoveRange(0,1);
-                playerOne.inventory.cups.RemoveRange(0,1);
             }
             
             
@@ -101,19 +99,19 @@ namespace LemStand
             }
             
 
-            return cupOfLemonade;
+            return ingredients;
 
 
         }
         public void MakeRecipe()
         {
-            pitcher = LemonadeRecipe();
+            fullPitcher = LemonadeRecipe();
 
-            Console.WriteLine("Your Pitcher inventory: " + pitcher);
+            Console.WriteLine("Your Pitcher inventory: " + fullPitcher);
             Console.WriteLine("Your Lemon inventory: " + playerOne.inventory.lemons.Count);
             Console.WriteLine("Your Sugar Cube inventory: " + playerOne.inventory.sugarCubes.Count);
-            Console.WriteLine("Your Ice Cube inventory: " + playerOne.inventory.iceCubes.Count);
-            Console.WriteLine("Your Cup inventory: " + playerOne.inventory.cups.Count);
+            //Console.WriteLine("Your Ice Cube inventory: " + playerOne.inventory.iceCubes.Count);
+            //Console.WriteLine("Your Cup inventory: " + playerOne.inventory.cups.Count);
             
 
 
