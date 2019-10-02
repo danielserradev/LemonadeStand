@@ -12,6 +12,7 @@ namespace LemStand
         public Player playerOne;
         public Store store;
         public Recipe recipe;
+        public Weather weather;
         Customer customer;
         public int numberOfPlayers;
         
@@ -32,26 +33,23 @@ namespace LemStand
         //member methods(Can Do)
         public void RunGame()
         {
-            UserInterface.DiplayInfo();
+            weather = new Weather();
+            weather.WeatherConditions();
+            weather.RandomWeatherCondition();
+            weather.RandomTemerature();
+            weather.DisplayWeather();
+            //UserInterface.DiplayInfo();
             int numberOfPlayers = GetNumberOfPlayers();
             CreatePlayer(numberOfPlayers);
-            //playerOne.AccessMoney();
             playerOne.ChoosePlayerName();
-            playerOne.recipe.CreateLemonade();
-            
+            playerOne.recipe.CreateLemonade();            
             store = new Store(playerOne);            
             store.StoreMenu();
             playerOne.MakePitcher();
             playerOne.DisplayPitcherContents();
             customer = new Customer();
             customer.TakeCup(playerOne);
-            //MakeRecipe();
-            
-            
-            
-            
-            
-
+            SellTillEmpty();
         }
         public int GetNumberOfPlayers()
         {
@@ -87,40 +85,25 @@ namespace LemStand
                 playerOne = new Player();
             }
         }
-        //public int LemonadeRecipe()
-        //{
-            //if(playerOne.inventory.lemons.Count >= 1 && playerOne.inventory.sugarCubes.Count >= 1)
-            //{
-            //    ingredients++;
-            //    playerOne.inventory.lemons.RemoveRange(0,1);
-            //    playerOne.inventory.sugarCubes.RemoveRange(0,1);
-            //}
-            
-            
-            //if(playerOne.inventory.lemons.Count != 0 && playerOne.inventory.sugarCubes.Count != 0)
-            //{
-                
-            //    return LemonadeRecipe();
-                
-            //}
-            
-
-            //return ingredients;
-
-
-        //}
-        public void MakeRecipe()
+        public void SellTillEmpty()
         {
-
-
-
-            //fullPitcher = LemonadeRecipe();
-
-            //Console.WriteLine("Your Pitcher inventory: " + fullPitcher);
-            //Console.WriteLine("Your Lemon inventory: " + playerOne.inventory.lemons.Count);
-            //Console.WriteLine("Your Sugar Cube inventory: " + playerOne.inventory.sugarCubes.Count);
-            //Console.WriteLine("Your Ice Cube inventory: " + playerOne.inventory.iceCubes.Count);
-            //Console.WriteLine("Your Cup inventory: " + playerOne.inventory.cups.Count);
+            if (customer.decision == true)
+            {
+                if (playerOne.FullPitcher >= 2 && playerOne.inventory.cups.Count >= 1 && playerOne.inventory.iceCubes.Count >= playerOne.recipe.amountOfIceCubes)
+                {
+                    customer.TakeCup(playerOne);
+                    SellTillEmpty();
+                }
+                else
+                {
+                    Console.WriteLine("You ran out of materials.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("The weather was shitty");
+            }
+            
         }
         
 

@@ -17,7 +17,7 @@ namespace LemStand
         //member methods(Can Do)
         public static void DiplayInfo()
         {
-            Console.WriteLine("HelloWorld");
+            Console.WriteLine();
             Console.WriteLine();
 
         }

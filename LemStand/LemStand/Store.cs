@@ -13,6 +13,7 @@ namespace LemStand
         Player player;
         Wallet wallet;
         public string playersChoice;
+        //public int amountOfItem;
         
         //constructor(Spawner)
         
@@ -24,6 +25,12 @@ namespace LemStand
         }
 
         //member methods(Can Do)
+        //public int UserInput()
+        //{
+        //    Console.WriteLine("please enter the amount you would like to purchase");
+        //    amountOfItem = int.Parse(Console.ReadLine());
+        //    return amountOfItem;
+        //}
         public void DisplayPrices()
         {
             Console.WriteLine("Prices are listed below. " +
@@ -135,7 +142,7 @@ namespace LemStand
                 "\nIce Cubes per pitcher: " + player.recipe.amountOfIceCubes +
                 "\nPrice per cup: " + player.recipe.pricePerCup +
                 "\n" +
-                "\nYour lemon inventory: " + player.inventory.sugarCubes.Count +
+                "\nYour Sugar Cube inventory: " + player.inventory.sugarCubes.Count +
                 "\nYour current balance is " + player.wallet.Money);
             int choice = int.Parse(Console.ReadLine());
             if (choice == 1)
@@ -169,7 +176,7 @@ namespace LemStand
                 "\nIce Cubes per pitcher: " + player.recipe.amountOfIceCubes +
                 "\nPrice per cup: " + player.recipe.pricePerCup +
                 "\n" +
-                "\nYour lemon inventory: " + player.inventory.iceCubes.Count +
+                "\nYour Ice Cube inventory: " + player.inventory.iceCubes.Count +
                 "\nYour current balance is " + player.wallet.Money);
             int choice = int.Parse(Console.ReadLine());
             if (choice == 1)
@@ -203,8 +210,9 @@ namespace LemStand
                 "\nIce Cubes per pitcher: " + player.recipe.amountOfIceCubes +
                 "\nPrice per cup: " + player.recipe.pricePerCup +
                 "\n" +
-                "\nYour lemon inventory: " + player.inventory.cups.Count +
+                "\nYour Cup inventory: " + player.inventory.cups.Count +
                 "\nYour current balance is " + player.wallet.Money);
+            
             int choice = int.Parse(Console.ReadLine());
             if (choice == 1)
             {
