@@ -11,6 +11,7 @@ namespace LemStand
         //member variables(Has a)
         //inventory of stuff
         Player player;
+        Wallet wallet;
         public string playersChoice;
         
         //constructor(Spawner)
@@ -98,14 +99,25 @@ namespace LemStand
                 "\nIce Cubes per pitcher: " + player.recipe.amountOfIceCubes +
                 "\nPrice per cup: " + player.recipe.pricePerCup +
                 "\n"+
-                "\nYour lemon inventory: " + player.inventory.lemons.Count);
+                "\nYour lemon inventory: " + player.inventory.lemons.Count +
+                "\nYour current balance is " + player.wallet.Money);
             
 
             int choice = int.Parse(Console.ReadLine());
             if(choice == 1)
             {
-                player.inventory.lemons.Add(new Lemon());
-                SellLemons();
+                if (player.wallet.Money >= .50)
+                {
+                    player.wallet.Money -= .50;
+                    player.inventory.lemons.Add(new Lemon());
+                    SellLemons();
+                }
+                else
+                {
+                    Console.WriteLine("You have insufficent funds.");
+                    StoreMenu();
+                }
+               
             }
             else if(choice == 2)
             {
@@ -123,12 +135,23 @@ namespace LemStand
                 "\nIce Cubes per pitcher: " + player.recipe.amountOfIceCubes +
                 "\nPrice per cup: " + player.recipe.pricePerCup +
                 "\n" +
-                "\nYour Sugar Cube inventory: " + player.inventory.sugarCubes.Count);
+                "\nYour lemon inventory: " + player.inventory.sugarCubes.Count +
+                "\nYour current balance is " + player.wallet.Money);
             int choice = int.Parse(Console.ReadLine());
             if (choice == 1)
             {
-                player.inventory.sugarCubes.Add(new SugarCube());
-                SellSugarCubes();
+                if (player.wallet.Money >= .20)
+                {
+                    player.wallet.Money-=.20;
+                    player.inventory.sugarCubes.Add(new SugarCube());
+                    SellSugarCubes();
+                }
+                else
+                {
+                    Console.WriteLine("You have insufficent funds.");
+                    StoreMenu();
+                }
+                
             }
             else if (choice == 2)
             {
@@ -146,12 +169,23 @@ namespace LemStand
                 "\nIce Cubes per pitcher: " + player.recipe.amountOfIceCubes +
                 "\nPrice per cup: " + player.recipe.pricePerCup +
                 "\n" +
-                "\nYour Ice Cube inventory: " + player.inventory.iceCubes.Count);
+                "\nYour lemon inventory: " + player.inventory.iceCubes.Count +
+                "\nYour current balance is " + player.wallet.Money);
             int choice = int.Parse(Console.ReadLine());
             if (choice == 1)
             {
-                player.inventory.iceCubes.Add(new IceCube());
-                SellIceCubes();
+                if(player.wallet.Money >= .05)
+                {
+                    player.wallet.Money-=.05;
+                    player.inventory.iceCubes.Add(new IceCube());
+                    SellIceCubes();
+                }
+                else
+                {
+                    Console.WriteLine("You have insufficent funds.");
+                    StoreMenu();
+                }
+                
             }
             else if (choice == 2)
             {
@@ -169,12 +203,23 @@ namespace LemStand
                 "\nIce Cubes per pitcher: " + player.recipe.amountOfIceCubes +
                 "\nPrice per cup: " + player.recipe.pricePerCup +
                 "\n" +
-                "\nYour cup inventory: " + player.inventory.cups.Count);
+                "\nYour lemon inventory: " + player.inventory.cups.Count +
+                "\nYour current balance is " + player.wallet.Money);
             int choice = int.Parse(Console.ReadLine());
             if (choice == 1)
             {
-                player.inventory.cups.Add(new Cup());
-                SellCups();
+                if (player.wallet.Money >= .10)
+                {
+                    player.wallet.Money-=.10;
+                    player.inventory.cups.Add(new Cup());
+                    SellCups();
+                }
+                else
+                {
+                    Console.WriteLine("You have insufficent funds.");
+                    StoreMenu();
+                }
+                
             }
             else if (choice == 2)
             {

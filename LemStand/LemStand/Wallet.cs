@@ -6,13 +6,34 @@ using System.Threading.Tasks;
 
 namespace LemStand
 {
-    class Wallet 
+    public class Wallet 
     {
         //member variables(Has a)
-        private double money;
+        private double money = 20;
 
         //constructor(Spawner)
 
         //member methods(Can Do)
+        public double Money 
+        {
+            set
+            {
+                if(value <= 0)
+                {
+                    money = 0;
+                }
+                else
+                {
+                    money = value;
+                }
+            }
+            get
+            {
+                return money;
+            }
+
+            
+        }
+        
     }
 }

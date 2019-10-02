@@ -26,10 +26,10 @@ namespace LemStand
         //member methods(Can Do)
         public void CreateLemonade()
         {
-            Console.WriteLine("Please enter the amount of lemons you would like to put into the lemonade.");
+            Console.WriteLine("Please enter the amount of lemons you would like to put into the pitcher of lemonade.");
             amountOfLemons = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Please enter the amount of Sugar Cubes you would like to put into the lemonade.");
+            Console.WriteLine("Please enter the amount of Sugar Cubes you would like to put into the pitcher of lemonade.");
             amountOfSugarCubes = int.Parse(Console.ReadLine());
 
             Console.WriteLine("Please enter the amount of Ice Cubes you would like to put into each cup.");

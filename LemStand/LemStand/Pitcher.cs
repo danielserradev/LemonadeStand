@@ -6,15 +6,18 @@ using System.Threading.Tasks;
 
 namespace LemStand
 {
-    class Pitcher : Item
+    public class Pitcher : Item
     {
         //member variables(Has a)
-        public int fullPitcher;
+        
         public int cupsLeftInPitcher;
+        public int lemonsInPitcher;
+        public int sugarCubesInPitcher;
 
 
         //constructor(Spawner)
 
         //member methods(Can Do)
+        
     }
 }

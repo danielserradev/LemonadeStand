@@ -6,14 +6,34 @@ using System.Threading.Tasks;
 
 namespace LemStand
 {
-    class Customer 
+    public class Customer 
     {
         //member variables(Has a)
         private List<string> names;
         public string name;
+        Player player;
 
         //constructor(Spawner)
+        public Customer(Player playerBeingPassedIn)
+        {
+            player = playerBeingPassedIn;
+        }
 
         //member methods(Can Do)
+        public void TakeCup()
+        {
+            if(player.FullPitcher >= 0)
+            {
+                player.FullPitcher -= 2;
+                Console.WriteLine(player.FullPitcher);
+            }
+            else
+            {
+                Console.WriteLine("Your pitcher is empty");
+            }
+            
+
+        }
     }
+    
 }

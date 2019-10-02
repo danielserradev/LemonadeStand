@@ -11,7 +11,8 @@ namespace LemStand
         //member variables(Has a)
         public Player playerOne;
         public Store store;
-        public Recipe recipe;        
+        public Recipe recipe;
+        Customer customer;
         public int numberOfPlayers;
         public int dayCounter;
         public int fullPitcher;
@@ -34,12 +35,16 @@ namespace LemStand
             UserInterface.DiplayInfo();
             int numberOfPlayers = GetNumberOfPlayers();
             CreatePlayer(numberOfPlayers);
+            //playerOne.AccessMoney();
             playerOne.ChoosePlayerName();
             playerOne.recipe.CreateLemonade();
-            store = new Store(playerOne);
             
+            store = new Store(playerOne);            
             store.StoreMenu();
-            MakeRecipe();
+            playerOne.MakePitcher();
+            playerOne.DisplayPitcherContents();
+            customer.TakeCup();
+            //MakeRecipe();
             
             
             
@@ -81,47 +86,42 @@ namespace LemStand
                 playerOne = new Player();
             }
         }
-        public int LemonadeRecipe()
-        {
-            if(playerOne.inventory.lemons.Count >= 1 && playerOne.inventory.sugarCubes.Count >= 1)
-            {
-                ingredients++;
-                playerOne.inventory.lemons.RemoveRange(0,1);
-                playerOne.inventory.sugarCubes.RemoveRange(0,1);
-            }
+        //public int LemonadeRecipe()
+        //{
+            //if(playerOne.inventory.lemons.Count >= 1 && playerOne.inventory.sugarCubes.Count >= 1)
+            //{
+            //    ingredients++;
+            //    playerOne.inventory.lemons.RemoveRange(0,1);
+            //    playerOne.inventory.sugarCubes.RemoveRange(0,1);
+            //}
             
             
-            if(playerOne.inventory.lemons.Count != 0)
-            {
+            //if(playerOne.inventory.lemons.Count != 0 && playerOne.inventory.sugarCubes.Count != 0)
+            //{
                 
-                return LemonadeRecipe();
+            //    return LemonadeRecipe();
                 
-            }
+            //}
             
 
-            return ingredients;
+            //return ingredients;
 
 
-        }
+        //}
         public void MakeRecipe()
         {
-            fullPitcher = LemonadeRecipe();
 
-            Console.WriteLine("Your Pitcher inventory: " + fullPitcher);
-            Console.WriteLine("Your Lemon inventory: " + playerOne.inventory.lemons.Count);
-            Console.WriteLine("Your Sugar Cube inventory: " + playerOne.inventory.sugarCubes.Count);
+
+
+            //fullPitcher = LemonadeRecipe();
+
+            //Console.WriteLine("Your Pitcher inventory: " + fullPitcher);
+            //Console.WriteLine("Your Lemon inventory: " + playerOne.inventory.lemons.Count);
+            //Console.WriteLine("Your Sugar Cube inventory: " + playerOne.inventory.sugarCubes.Count);
             //Console.WriteLine("Your Ice Cube inventory: " + playerOne.inventory.iceCubes.Count);
             //Console.WriteLine("Your Cup inventory: " + playerOne.inventory.cups.Count);
-            
-
-
         }
-        public int DayCounter()
-        {
-            dayCounter++;
-            Console.WriteLine("Day " + dayCounter + " out of 7.");
-            return dayCounter;
-        }
+        
 
         
         
