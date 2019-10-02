@@ -14,7 +14,7 @@ namespace LemStand
         public Recipe recipe;
         Customer customer;
         public int numberOfPlayers;
-        public int dayCounter;
+        
         public int fullPitcher;
         public int ingredients = 0;
 
@@ -24,7 +24,7 @@ namespace LemStand
         //constructor(Spawner)
         public Game()
         {
-            dayCounter = 0;
+            //customer = new Customer();
             
 
         }
@@ -43,7 +43,8 @@ namespace LemStand
             store.StoreMenu();
             playerOne.MakePitcher();
             playerOne.DisplayPitcherContents();
-            customer.TakeCup();
+            customer = new Customer();
+            customer.TakeCup(playerOne);
             //MakeRecipe();
             
             

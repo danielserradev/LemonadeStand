@@ -11,18 +11,19 @@ namespace LemStand
         //member variables(Has a)
         private List<string> names;
         public string name;
-        Player player;
+        
+        
 
         //constructor(Spawner)
-        public Customer(Player playerBeingPassedIn)
+        public Customer()
         {
-            player = playerBeingPassedIn;
+            
         }
 
         //member methods(Can Do)
-        public void TakeCup()
+        public void TakeCup(Player player)
         {
-            if(player.FullPitcher >= 0)
+            if(player.FullPitcher >= 2)
             {
                 player.FullPitcher -= 2;
                 Console.WriteLine(player.FullPitcher);
