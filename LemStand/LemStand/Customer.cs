@@ -28,6 +28,7 @@ namespace LemStand
         {          
             if (player.FullPitcher >= 2 && player.inventory.cups.Count >= 1 && player.inventory.iceCubes.Count >= player.recipe.amountOfIceCubes)
             {
+                
                 player.FullPitcher -= 2;
                 player.inventory.cups.RemoveAt(0);
                 player.inventory.iceCubes.RemoveRange(0, player.recipe.amountOfIceCubes);

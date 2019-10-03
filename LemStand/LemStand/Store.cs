@@ -153,9 +153,9 @@ namespace LemStand
             int amountOfItem = UserInput();
             if (amountOfItem >= 1)
             {
-                if (player.wallet.Money >= .50 * amountOfItem)
+                if (player.wallet.Money >= .20 * amountOfItem)
                 {
-                    player.wallet.Money -= .50 * amountOfItem;
+                    player.wallet.Money -= .20 * amountOfItem;
                     for (int i = 0; i < amountOfItem; i++)
                     {
                         player.inventory.sugarCubes.Add(new SugarCube());

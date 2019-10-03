@@ -52,6 +52,9 @@ namespace LemStand
         }
         public void DisplayWeather()
         {
+            WeatherConditions();
+            RandomWeatherCondition();
+            RandomTemerature();
             Console.WriteLine("Todays weather is " + condition + " and " + temperature + " degrees outside.");
             
         }

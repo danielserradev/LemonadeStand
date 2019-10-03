@@ -13,45 +13,55 @@ namespace LemStand
         public Store store;
         public Recipe recipe;
         public Weather weather;
+        public Day day;
         Customer customer;
         public int numberOfPlayers;
         
         public int fullPitcher;
         public int ingredients = 0;
+        public List<string> days;
 
-        
 
 
         //constructor(Spawner)
         public Game()
         {
             //customer = new Customer();
-            
+            days = new List<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
 
         }
 
         //member methods(Can Do)
+        public void LoopThroughDays()
+        {
+            
+        }
         public void RunGame()
         {
-            weather = new Weather();
-            customer = new Customer();
-            weather.WeatherConditions();
-            weather.RandomWeatherCondition();
-            weather.RandomTemerature();
-            weather.DisplayWeather();
-            customer.DecisionToBuy(weather);
-            //UserInterface.DiplayInfo();
+            
+            UserInterface.DiplayInfo();
             int numberOfPlayers = GetNumberOfPlayers();
             CreatePlayer(numberOfPlayers);
             playerOne.ChoosePlayerName();
-            playerOne.recipe.CreateLemonade();            
-            store = new Store(playerOne);            
-            store.StoreMenu();
-            playerOne.MakePitcher();
-            playerOne.DisplayPitcherContents();
+            foreach (string individualDay in days)
+            {
+                Console.WriteLine("Today is " + individualDay);
+                day = new Day();
+                weather = new Weather();
+                customer = new Customer();
+                weather.DisplayWeather();
+                customer.DecisionToBuy(weather);
+                playerOne.recipe.CreateLemonade();
+                store = new Store(playerOne);
+                store.StoreMenu();
+                playerOne.MakePitcher();
+                playerOne.DisplayPitcherContents();
+
+                customer.TakeCup(playerOne);
+                SellTillEmpty();
+
+            }
             
-            customer.TakeCup(playerOne);
-            SellTillEmpty();
         }
         public int GetNumberOfPlayers()
         {
@@ -89,10 +99,12 @@ namespace LemStand
         }
         public void SellTillEmpty()
         {
+            
             if (customer.decision == true)
             {
                 if (playerOne.FullPitcher >= 2 && playerOne.inventory.cups.Count >= 1 && playerOne.inventory.iceCubes.Count >= playerOne.recipe.amountOfIceCubes)
                 {
+                    
                     customer.TakeCup(playerOne);
                     SellTillEmpty();
                     playerOne.wallet.netIncome = playerOne.wallet.Money;
