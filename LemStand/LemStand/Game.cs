@@ -34,10 +34,12 @@ namespace LemStand
         public void RunGame()
         {
             weather = new Weather();
+            customer = new Customer();
             weather.WeatherConditions();
             weather.RandomWeatherCondition();
             weather.RandomTemerature();
             weather.DisplayWeather();
+            customer.DecisionToBuy(weather);
             //UserInterface.DiplayInfo();
             int numberOfPlayers = GetNumberOfPlayers();
             CreatePlayer(numberOfPlayers);
@@ -47,7 +49,7 @@ namespace LemStand
             store.StoreMenu();
             playerOne.MakePitcher();
             playerOne.DisplayPitcherContents();
-            customer = new Customer();
+            
             customer.TakeCup(playerOne);
             SellTillEmpty();
         }
@@ -93,6 +95,8 @@ namespace LemStand
                 {
                     customer.TakeCup(playerOne);
                     SellTillEmpty();
+                    playerOne.wallet.netIncome = playerOne.wallet.Money;
+                    
                 }
                 else
                 {

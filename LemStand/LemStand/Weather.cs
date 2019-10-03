@@ -30,7 +30,7 @@ namespace LemStand
         }
         public string RandomWeatherCondition()
         {
-            int tempWC = rng.Next(1, weatherCondition.Count);
+            int tempWC = rng.Next(1, weatherCondition.Count + 1);
             if(tempWC == 1)
             {
                 condition = "Sunny";

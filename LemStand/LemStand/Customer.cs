@@ -13,6 +13,7 @@ namespace LemStand
         public string name;
         public bool decision;
         
+        
 
 
 
@@ -41,17 +42,20 @@ namespace LemStand
         }
         public bool DecisionToBuy(Weather weather)
         {
-            if (weather.condition == "Sunny" && weather.temperature < 65)
+            if (weather.condition == "Sunny" && weather.temperature >= 55)
             {
-                return true;
+                decision = true;
+                return decision;
             }
-            else if (weather.condition == "Rainy" && weather.temperature < 90)
+            else if (weather.condition == "Rainy" && weather.temperature > 85)
             {
-                return true;
+                decision = true;
+                return decision;
             }
-            else if (weather.condition == "Cloudy" && weather.temperature < 80)
+            else if (weather.condition == "Cloudy" && weather.temperature > 65)
             {
-                return true;
+                decision = true;
+                return decision;
             }
             else
             {

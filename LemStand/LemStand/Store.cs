@@ -13,7 +13,7 @@ namespace LemStand
         Player player;
         Wallet wallet;
         public string playersChoice;
-        //public int amountOfItem;
+        public int amountOfItem;
         
         //constructor(Spawner)
         
@@ -25,12 +25,12 @@ namespace LemStand
         }
 
         //member methods(Can Do)
-        //public int UserInput()
-        //{
-        //    Console.WriteLine("please enter the amount you would like to purchase");
-        //    amountOfItem = int.Parse(Console.ReadLine());
-        //    return amountOfItem;
-        //}
+        public int UserInput()
+        {
+            Console.WriteLine("please enter the amount you would like to purchase");
+            amountOfItem = int.Parse(Console.ReadLine());
+            return amountOfItem;
+        }
         public void DisplayPrices()
         {
             Console.WriteLine("Prices are listed below. " +
@@ -108,16 +108,21 @@ namespace LemStand
                 "\n"+
                 "\nYour lemon inventory: " + player.inventory.lemons.Count +
                 "\nYour current balance is " + player.wallet.Money);
-            
 
-            int choice = int.Parse(Console.ReadLine());
-            if(choice == 1)
+
+            int amountOfItem = UserInput();
+            if(amountOfItem >= 1)
             {
-                if (player.wallet.Money >= .50)
+                if (player.wallet.Money >= .50 * amountOfItem)
                 {
-                    player.wallet.Money -= .50;
-                    player.inventory.lemons.Add(new Lemon());
-                    SellLemons();
+                    player.wallet.Money -= .50 * amountOfItem;
+                    for(int i = 0; i < amountOfItem; i++)
+                    {
+                        player.inventory.lemons.Add(new Lemon());
+                    }
+                    StoreMenu();
+                        
+                    
                 }
                 else
                 {
@@ -126,7 +131,7 @@ namespace LemStand
                 }
                
             }
-            else if(choice == 2)
+            else if(amountOfItem == 0)
             {
                 StoreMenu();
             }
@@ -144,23 +149,29 @@ namespace LemStand
                 "\n" +
                 "\nYour Sugar Cube inventory: " + player.inventory.sugarCubes.Count +
                 "\nYour current balance is " + player.wallet.Money);
-            int choice = int.Parse(Console.ReadLine());
-            if (choice == 1)
+            
+            int amountOfItem = UserInput();
+            if (amountOfItem >= 1)
             {
-                if (player.wallet.Money >= .20)
+                if (player.wallet.Money >= .50 * amountOfItem)
                 {
-                    player.wallet.Money-=.20;
-                    player.inventory.sugarCubes.Add(new SugarCube());
-                    SellSugarCubes();
+                    player.wallet.Money -= .50 * amountOfItem;
+                    for (int i = 0; i < amountOfItem; i++)
+                    {
+                        player.inventory.sugarCubes.Add(new SugarCube());
+                    }
+                    StoreMenu();
+
+
                 }
                 else
                 {
                     Console.WriteLine("You have insufficent funds.");
                     StoreMenu();
                 }
-                
+
             }
-            else if (choice == 2)
+            else if (amountOfItem == 0)
             {
                 StoreMenu();
             }
@@ -178,23 +189,28 @@ namespace LemStand
                 "\n" +
                 "\nYour Ice Cube inventory: " + player.inventory.iceCubes.Count +
                 "\nYour current balance is " + player.wallet.Money);
-            int choice = int.Parse(Console.ReadLine());
-            if (choice == 1)
+            int amountOfItem = UserInput();
+            if (amountOfItem >= 1)
             {
-                if(player.wallet.Money >= .05)
+                if (player.wallet.Money >= .05 * amountOfItem)
                 {
-                    player.wallet.Money-=.05;
-                    player.inventory.iceCubes.Add(new IceCube());
-                    SellIceCubes();
+                    player.wallet.Money -= .05 * amountOfItem;
+                    for (int i = 0; i < amountOfItem; i++)
+                    {
+                        player.inventory.iceCubes.Add(new IceCube());
+                    }
+                    StoreMenu();
+
+
                 }
                 else
                 {
                     Console.WriteLine("You have insufficent funds.");
                     StoreMenu();
                 }
-                
+
             }
-            else if (choice == 2)
+            else if (amountOfItem == 0)
             {
                 StoreMenu();
             }
@@ -212,24 +228,29 @@ namespace LemStand
                 "\n" +
                 "\nYour Cup inventory: " + player.inventory.cups.Count +
                 "\nYour current balance is " + player.wallet.Money);
-            
-            int choice = int.Parse(Console.ReadLine());
-            if (choice == 1)
+
+            int amountOfItem = UserInput();
+            if (amountOfItem >= 1)
             {
-                if (player.wallet.Money >= .10)
+                if (player.wallet.Money >= .50 * amountOfItem)
                 {
-                    player.wallet.Money-=.10;
-                    player.inventory.cups.Add(new Cup());
-                    SellCups();
+                    player.wallet.Money -= .50 * amountOfItem;
+                    for (int i = 0; i < amountOfItem; i++)
+                    {
+                        player.inventory.cups.Add(new Cup());
+                    }
+                    StoreMenu();
+
+
                 }
                 else
                 {
                     Console.WriteLine("You have insufficent funds.");
                     StoreMenu();
                 }
-                
+
             }
-            else if (choice == 2)
+            else if (amountOfItem == 0)
             {
                 StoreMenu();
             }

@@ -9,9 +9,14 @@ namespace LemStand
     public class Wallet 
     {
         //member variables(Has a)
-        private double money = 20;
+        private double money;
+        public double netIncome;
 
         //constructor(Spawner)
+        public Wallet()
+        {
+            money = 20.00;
+        }
 
         //member methods(Can Do)
         public double Money 
