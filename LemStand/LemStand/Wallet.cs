@@ -39,6 +39,9 @@ namespace LemStand
 
             
         }
-        
+        public void DisplayNetIncome()
+        {
+            Console.WriteLine(netIncome);
+        }
     }
 }

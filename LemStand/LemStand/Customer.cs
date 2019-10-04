@@ -25,7 +25,8 @@ namespace LemStand
 
         //member methods(Can Do)
         public void TakeCup(Player player)
-        {          
+        {  
+            
             if (player.FullPitcher >= 2 && player.inventory.cups.Count >= 1 && player.inventory.iceCubes.Count >= player.recipe.amountOfIceCubes)
             {
                 
@@ -33,8 +34,8 @@ namespace LemStand
                 player.inventory.cups.RemoveAt(0);
                 player.inventory.iceCubes.RemoveRange(0, player.recipe.amountOfIceCubes);
                 player.wallet.Money += player.recipe.pricePerCup;
-                Console.WriteLine(player.FullPitcher);
-                Console.WriteLine(player.wallet.Money);
+                
+                
             }
             else
             {

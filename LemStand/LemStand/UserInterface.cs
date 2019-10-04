@@ -21,5 +21,19 @@ namespace LemStand
             Console.WriteLine();
 
         }
+        public static void StoreMenu()
+        {
+
+        }
+        public static int GenerateRandomNumber(int maxValue)
+        {
+            Random random = new Random();
+            return random.Next(maxValue);
+        }
+        //public static int GetUserInput(string message)
+        //{
+        //    Console.WriteLine(message);
+        //    return Console.ReadLine();
+        //}
     }
 }

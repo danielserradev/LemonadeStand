@@ -34,10 +34,10 @@ namespace LemStand
         public void DisplayPrices()
         {
             Console.WriteLine("Prices are listed below. " +
-                "\nLemons: $1 " +
-                "\nSugarCubes: $2 " +
-                "\nIceCubes: $3 " +
-                "\nCups: $4 \n");
+                "\nLemons: $0.50 " +
+                "\nSugarCubes: $0.20 " +
+                "\nIceCubes: $0.05 " +
+                "\nCups: $0.05 \n");
             StoreMenu();
         }
         
@@ -48,7 +48,8 @@ namespace LemStand
                 "\n Lemons: " + player.inventory.lemons.Count +
                 "\n Sugar Cubes: " + player.inventory.sugarCubes.Count +
                 "\n Ice Cubes: " + player.inventory.iceCubes.Count +
-                "\n Cups: " + player.inventory.cups.Count);
+                "\n Cups: " + player.inventory.cups.Count + 
+                "\n Money: " + player.wallet.Money);
             StoreMenu();
         }
         
@@ -65,7 +66,7 @@ namespace LemStand
                 "\n4. Buy ice cubes " +
                 "\n5. Buy cups " +
                 "\n6. Check your inventory" +
-                "\n7. Leave the store \n");
+                "\n7. Leave the store to make and sell lemonade\n");
             playersChoice = Console.ReadLine();
             switch (playersChoice)
             {
@@ -88,7 +89,7 @@ namespace LemStand
                     CheckInventory();
                     break;
                 case "7":
-
+                    //make and sell lemonade
                     break;
                 default:
                     StoreMenu();
@@ -232,9 +233,9 @@ namespace LemStand
             int amountOfItem = UserInput();
             if (amountOfItem >= 1)
             {
-                if (player.wallet.Money >= .50 * amountOfItem)
+                if (player.wallet.Money >= .05 * amountOfItem)
                 {
-                    player.wallet.Money -= .50 * amountOfItem;
+                    player.wallet.Money -= .05 * amountOfItem;
                     for (int i = 0; i < amountOfItem; i++)
                     {
                         player.inventory.cups.Add(new Cup());

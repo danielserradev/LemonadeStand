@@ -15,7 +15,7 @@ namespace LemStand
         public Wallet wallet;
         public Pitcher pitcher;
         public Customer customer;
-        private double fullPitcher = 100;
+        private double fullPitcher;
 
         //constructor(Spawner)
         public Player()
@@ -23,10 +23,7 @@ namespace LemStand
             inventory = new Inventory();
             recipe = new Recipe();
             wallet = new Wallet();
-            pitcher = new Pitcher();
-            
-            
-            
+            pitcher = new Pitcher();         
         }
 
         //member methods(Can Do)
@@ -39,7 +36,10 @@ namespace LemStand
         public void MakePitcher()
         {
             pitcher.lemonsInPitcher = inventory.lemons.Count;
+            inventory.lemons.RemoveRange(0, inventory.lemons.Count);
             pitcher.sugarCubesInPitcher = inventory.sugarCubes.Count;
+            inventory.sugarCubes.RemoveRange(0, inventory.sugarCubes.Count);
+            fullPitcher = 100;
 
         }
         public void DisplayPitcherContents()

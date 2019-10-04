@@ -11,12 +11,10 @@ namespace LemStand
         //member variables(Has a)
         public Player playerOne;
         public Store store;
-        public Recipe recipe;
         public Weather weather;
         public Day day;
         Customer customer;
-        public int numberOfPlayers;
-        
+        public int numberOfPlayers;        
         public int fullPitcher;
         public int ingredients = 0;
         public List<string> days;
@@ -32,10 +30,7 @@ namespace LemStand
         }
 
         //member methods(Can Do)
-        public void LoopThroughDays()
-        {
-            
-        }
+        
         public void RunGame()
         {
             
@@ -46,22 +41,19 @@ namespace LemStand
             foreach (string individualDay in days)
             {
                 Console.WriteLine("Today is " + individualDay);
-                day = new Day();
+                day = new Day(individualDay);
+                day.SpawnCustomers();
                 weather = new Weather();
-                customer = new Customer();
                 weather.DisplayWeather();
-                customer.DecisionToBuy(weather);
                 playerOne.recipe.CreateLemonade();
                 store = new Store(playerOne);
                 store.StoreMenu();
                 playerOne.MakePitcher();
-                playerOne.DisplayPitcherContents();
-
-                customer.TakeCup(playerOne);
-                SellTillEmpty();
+                playerOne.DisplayPitcherContents();                
+                SellTillEmpty(weather);
 
             }
-            
+            playerOne.wallet.DisplayNetIncome();
         }
         public int GetNumberOfPlayers()
         {
@@ -97,29 +89,39 @@ namespace LemStand
                 playerOne = new Player();
             }
         }
-        public void SellTillEmpty()
+        public void SellTillEmpty(Weather weather)
         {
-            
-            if (customer.decision == true)
+            foreach (Customer individualCustomer in day.customers)
             {
-                if (playerOne.FullPitcher >= 2 && playerOne.inventory.cups.Count >= 1 && playerOne.inventory.iceCubes.Count >= playerOne.recipe.amountOfIceCubes)
+                individualCustomer.DecisionToBuy(weather);
+                if (individualCustomer.decision == true)
                 {
+                    if (playerOne.FullPitcher >= 2 && playerOne.inventory.cups.Count >= 1 && playerOne.inventory.iceCubes.Count >= playerOne.recipe.amountOfIceCubes)
+                    {
+
+                        individualCustomer.TakeCup(playerOne);
+                        Console.WriteLine(individualCustomer.name + " bought a cup of lemonade.");
+                        Console.WriteLine(individualCustomer.name + " gave you " + playerOne.recipe.pricePerCup + " cents, You know have a total of " + playerOne.wallet.Money);
+                        Console.WriteLine("Your pitcher of lemonade is " + playerOne.FullPitcher + "% full.\n");
+                        playerOne.wallet.netIncome = playerOne.wallet.Money;
+
+                    }
+                    else
+                    {
+                        Console.WriteLine(individualCustomer.name + " Wanted lemonade but you ran out of materials.\n");
+                    }
                     
-                    customer.TakeCup(playerOne);
-                    SellTillEmpty();
-                    playerOne.wallet.netIncome = playerOne.wallet.Money;
-                    
+
                 }
                 else
                 {
-                    Console.WriteLine("You ran out of materials.");
+                    Console.WriteLine(individualCustomer.name + " Didnt want lemonade beacuase the weather was bad.\n");
                 }
-            }
-            else
-            {
-                Console.WriteLine("The weather was shitty");
+                
             }
             
+
+
         }
         
 

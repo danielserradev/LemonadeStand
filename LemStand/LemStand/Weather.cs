@@ -30,23 +30,15 @@ namespace LemStand
         }
         public string RandomWeatherCondition()
         {
-            int tempWC = rng.Next(1, weatherCondition.Count + 1);
-            if(tempWC == 1)
-            {
-                condition = "Sunny";
-            }
-            else if(tempWC == 2)
-            {
-                condition = "Rainy";
-            }
-            else if(tempWC == 3)
-            {
-                condition = "Cloudy";
-            }             
+            //random
+            int index = UserInterface.GenerateRandomNumber(weatherCondition.Count);
+            
+            condition = weatherCondition[index];
             return condition;
         }
         public int RandomTemerature()
         {
+            //random
             temperature = rng.Next(55, 95);
             return temperature;
         }
