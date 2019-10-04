@@ -15,7 +15,6 @@ namespace LemStand
         public int amountOfSugarCubes;
         public int amountOfIceCubes;
         public double pricePerCup;
-        
 
         //constructor(Spawner)
         public Recipe()
@@ -26,6 +25,7 @@ namespace LemStand
         //member methods(Can Do)
         public void CreateLemonade()
         {
+            
             //amountOfLemons = UserInterface.GetUserInput("Please enter the amount of lemons you would like to put into the pitcher of lemonade.");
             amountOfLemons = GetAmountOfItem("lemons");
 

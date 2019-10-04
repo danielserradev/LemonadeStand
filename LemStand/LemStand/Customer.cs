@@ -9,7 +9,6 @@ namespace LemStand
     public class Customer 
     {
         //member variables(Has a)
-        private List<string> names;
         public string name;
         public bool decision;
         
@@ -42,7 +41,7 @@ namespace LemStand
                 Console.WriteLine("You ran out of materials.");
             } 
         }
-        public bool DecisionToBuy(Weather weather)
+        public bool DecisionToBuy (Weather weather)
         {
             if (weather.condition == "Sunny" && weather.temperature >= 55)
             {

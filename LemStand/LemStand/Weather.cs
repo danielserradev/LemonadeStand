@@ -15,12 +15,13 @@ namespace LemStand
         public string predictedForecast;
         public int tempWC;
         Random rng;
+        public List<PredictedWeather> predictedWeather;
 
         //constructor(Spawner)
         public Weather()
         {
             rng = new Random();
-            
+            predictedWeather = new List<PredictedWeather>();
         }
 
         //member methods(Can Do)
@@ -46,9 +47,7 @@ namespace LemStand
         {
             WeatherConditions();
             RandomWeatherCondition();
-            RandomTemerature();
-            Console.WriteLine("Todays weather is " + condition + " and " + temperature + " degrees outside.");
-            
+            RandomTemerature();           
         }
         
     }

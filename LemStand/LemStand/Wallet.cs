@@ -11,6 +11,7 @@ namespace LemStand
         //member variables(Has a)
         private double money;
         public double netIncome;
+        public double totalProfit;
 
         //constructor(Spawner)
         public Wallet()
@@ -41,7 +42,12 @@ namespace LemStand
         }
         public void DisplayNetIncome()
         {
-            Console.WriteLine(netIncome);
+            CalculateTotalProfit();
+            Console.WriteLine("After 7 days you finished with a total profit/loss of " + totalProfit);
+        }
+        public void CalculateTotalProfit()
+        {
+            totalProfit = netIncome - 20;
         }
     }
 }

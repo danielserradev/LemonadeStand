@@ -9,7 +9,6 @@ namespace LemStand
     class Day 
     {
         //member variables(Has a)
-        public Weather weather;
         public List<Customer> customers;
         public string dayName;
         //constructor(Spawner)
@@ -34,5 +33,8 @@ namespace LemStand
 
             }
         }
-    }
+
+
+        
+    }   
 }

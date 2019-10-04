@@ -12,13 +12,11 @@ namespace LemStand
         public Player playerOne;
         public Store store;
         public Weather weather;
-        public Day day;
-        Customer customer;
-        public int numberOfPlayers;        
-        public int fullPitcher;
+        public Day day;        
+        public int numberOfPlayers;           
         public int ingredients = 0;
         public List<string> days;
-
+        PredictedWeather predictedWeather;
 
 
         //constructor(Spawner)
@@ -30,24 +28,48 @@ namespace LemStand
         }
 
         //member methods(Can Do)
-        
-        public void RunGame()
+        public void WeatherForecast()
         {
-            
-            UserInterface.DiplayInfo();
-            int numberOfPlayers = GetNumberOfPlayers();
-            CreatePlayer(numberOfPlayers);
-            playerOne.ChoosePlayerName();
             foreach (string individualDay in days)
             {
-                Console.WriteLine("Today is " + individualDay);
+                Console.WriteLine(individualDay + " might be");
+                weather = new Weather();
+                weather.DisplayWeather();
+                Console.WriteLine(weather.condition + " and " + weather.temperature);
+                //weather.predictedWeather.
+
+
+                //for (int i = 1; i < days.Count; i++)
+                //{
+
+                //}
+
+
+
+
+                Console.ReadLine();
+            }
+
+
+        }
+        public void RunGame()
+        {
+            WeatherForecast();
+            UserInterface.DiplayStepsOfGame();
+            int numberOfPlayers = GetPlayers();
+            CreatePlayer(numberOfPlayers);
+            playerOne.ChoosePlayerName();            
+            foreach (string individualDay in days)
+            {
                 day = new Day(individualDay);
                 day.SpawnCustomers();
                 weather = new Weather();
                 weather.DisplayWeather();
-                playerOne.recipe.CreateLemonade();
+                UserInterface.DisplayGameInfo(playerOne, day, weather);
+                playerOne.recipe.CreateLemonade();                
                 store = new Store(playerOne);
                 store.StoreMenu();
+                UserInterface.DisplayGameInfoMinusClear(playerOne, day, weather);
                 playerOne.MakePitcher();
                 playerOne.DisplayPitcherContents();                
                 SellTillEmpty(weather);
@@ -55,9 +77,9 @@ namespace LemStand
             }
             playerOne.wallet.DisplayNetIncome();
         }
-        public int GetNumberOfPlayers()
+        public int GetPlayers()
         {
-            Console.WriteLine("Are 1 or 2 players playing? ");
+            Console.WriteLine("Press 1 to start playing ");
             try
             {
                 numberOfPlayers = int.Parse(Console.ReadLine());
@@ -71,11 +93,9 @@ namespace LemStand
                 case 1:
                     numberOfPlayers = 1;
                     break;
-                case 2:
-                    numberOfPlayers = 2;
-                    break;
+                
                 default:
-                    GetNumberOfPlayers();
+                    GetPlayers();
                     break;
 
             }
@@ -91,8 +111,10 @@ namespace LemStand
         }
         public void SellTillEmpty(Weather weather)
         {
+            
             foreach (Customer individualCustomer in day.customers)
             {
+                
                 individualCustomer.DecisionToBuy(weather);
                 if (individualCustomer.decision == true)
                 {
@@ -119,6 +141,9 @@ namespace LemStand
                 }
                 
             }
+
+            Console.WriteLine("Press any key to continue to the next day");
+            Console.ReadLine();
             
 
 
