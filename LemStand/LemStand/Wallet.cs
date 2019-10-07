@@ -49,5 +49,10 @@ namespace LemStand
         {
             totalProfit = netIncome - 20;
         }
+        public void DailyIncome()
+        {
+            CalculateTotalProfit();
+            Console.WriteLine("Your profit up to date is " + totalProfit);
+        }
     }
 }

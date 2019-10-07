@@ -24,7 +24,7 @@ namespace LemStand
         {
             //customer = new Customer();
             days = new List<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-
+            predictedWeather = new PredictedWeather();
         }
 
         //member methods(Can Do)
@@ -36,7 +36,7 @@ namespace LemStand
                 weather = new Weather();
                 weather.DisplayWeather();
                 Console.WriteLine(weather.condition + " and " + weather.temperature);
-                //weather.predictedWeather.
+                predictedWeather.predictedCondition = weather.condition;                
 
 
                 //for (int i = 1; i < days.Count; i++)
@@ -53,8 +53,8 @@ namespace LemStand
 
         }
         public void RunGame()
-        {
-            WeatherForecast();
+        { 
+            //WeatherForecast();
             UserInterface.DiplayStepsOfGame();
             int numberOfPlayers = GetPlayers();
             CreatePlayer(numberOfPlayers);

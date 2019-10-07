@@ -26,7 +26,7 @@ namespace LemStand
         public void CreateLemonade()
         {
             
-            //amountOfLemons = UserInterface.GetUserInput("Please enter the amount of lemons you would like to put into the pitcher of lemonade.");
+            
             amountOfLemons = GetAmountOfItem("lemons");
 
             amountOfSugarCubes = GetAmountOfItem("sugar cubes");

@@ -21,7 +21,7 @@ namespace LemStand
         public Weather()
         {
             rng = new Random();
-            predictedWeather = new List<PredictedWeather>();
+            
         }
 
         //member methods(Can Do)
